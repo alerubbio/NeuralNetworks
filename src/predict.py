@@ -5,11 +5,11 @@ import tensorflow as tf
 from moviepy.editor import *
 
 # Adjust to use a different model/video file
-MODEL_NAME = "fortnite.h5"
-VIDEO_NAME = "example_fortnite_video.mp4"
+MODEL_NAME = "valorant.h5"
+VIDEO_NAME = "valorant_round_restart.mp4"
 
 ROOT_DIR = Path(__file__).parent.absolute().parent
-VIDEO_PATH = ROOT_DIR.joinpath(f"assets/videos/{VIDEO_NAME}")
+VIDEO_PATH = ROOT_DIR.joinpath(f"test/{VIDEO_NAME}")
 MODEL_PATH = ROOT_DIR.joinpath(f"models/{MODEL_NAME}")
 
 try:

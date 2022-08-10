@@ -132,8 +132,8 @@ Please fill 'game_name' and 'dataset_path' accordingly before running it!
 """
 m = GameDetection(
     model_name="ResNet50",
-    game_name="---REPLACE---",
-    dataset_path="---REPLACE---",
+    game_name="valorant",
+    dataset_path="C:/Users/Alejandro/Desktop/Mini-Desk/Projects/TwitchMontage/NeuralNetworks/assets/images",
     input_size=(224, 224),
     batch_size=16,
     save_generated_images=False,
