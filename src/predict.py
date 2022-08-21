@@ -59,7 +59,6 @@ def run_selection(model_path=MODEL_PATH):
         video_idx += 1
 
         if(result[1][0] == True):
-            #print(f'{video_file} is a valid ingame clip')
             results.append(result)
             current_duration += result[1][1]
 
@@ -70,7 +69,7 @@ def run_selection(model_path=MODEL_PATH):
 
 def write_results2file(results):
 
-    with open(r'E:/Projects/TwitchMontage/VideoCompilation/ClipData/valid_clips.txt', 'w') as fp:
+    with open('VideoCompilation/ClipData/valid_clips.txt', 'w') as fp:
         for result in results:
             # write each item on a new line
             fp.write("%s\n" % result[0])
@@ -84,7 +83,7 @@ write_results2file(selection[0])
 
 print('---------------------------------------------------------------------------------\n')
 print('Selection Data: \n')
-print(f'Clip index: {selection[1]} \nCompilation Duration: {selection[2]}')
+print(f'Clip count: {selection[1]} \nCompilation Duration: {selection[2]}s')
 
 
 # for result in selection[0]:
