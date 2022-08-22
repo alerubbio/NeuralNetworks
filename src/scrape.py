@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from time import sleep
 import json
+import urllib.request
 
 # webdriver PATH
 service = Service(executable_path="E:\Projects\TwitchMontage\VideoCompilation\chromedriver.exe")
@@ -28,7 +29,7 @@ driver.get(DRIVER_INIT_LINK)
 driver.find_element("xpath", '//*[text()="Language"]').click()
 driver.find_element("xpath", '//*[text()="English"]').click()
 
-DESIRED_NUMBER_OF_CLIPS = 3
+DESIRED_NUMBER_OF_CLIPS = 5
 
 def write2json(clips):
     with open('VideoCompilation/ClipData/clips_info.json', 'w') as fp:
@@ -77,7 +78,8 @@ def handle_refs():
 
             # get and open the video link 
             srcLink = driver.find_element("tag name", "video").get_attribute('src')
-            driver.get(srcLink)
+            urllib.request.urlretrieve(srcLink, DOWNLOAD_FILE_PATH + "\clip" + str(DESIRED_NUMBER_OF_CLIPS - count) + ".mp4")
+            
             sleep(1)
 
             # get stream title
