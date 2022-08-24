@@ -78,9 +78,7 @@ def handle_refs():
 
             # get and open the video link 
             srcLink = driver.find_element("tag name", "video").get_attribute('src')
-            urllib.request.urlretrieve(srcLink, DOWNLOAD_FILE_PATH + "\clip" + str(DESIRED_NUMBER_OF_CLIPS - count) + ".mp4")
-            
-            sleep(1)
+            urllib.request.urlretrieve(srcLink)
 
             # get stream title
             streamTitle = driver.find_element("xpath", "//h2[@data-a-target='stream-title']").get_attribute('title')
