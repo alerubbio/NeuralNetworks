@@ -44,7 +44,7 @@ def predict_ingame(VIDEO_PATH, MODEL_PATH):
     # boolean
     prediction = round(percentage[0] * 100, 4) >= 70
 
-    return [prediction, clip_duration]
+    return [prediction, clip.duration]
     
 # selects valid clips and meets desired video length requirement
 def run_selection(model_path=MODEL_PATH):
