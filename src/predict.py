@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import re
 import numpy as np
 import tensorflow as tf
 from moviepy.editor import *
@@ -45,10 +46,23 @@ def predict_ingame(VIDEO_PATH, MODEL_PATH):
     prediction = round(percentage[0] * 100, 4) >= 70
 
     return [prediction, clip.duration]
+
+def strip_folder(folder):
+    new_folder = []
+    for file in folder:
+        file = file.strip()
+        new_folder.append(file)
+    
+    return new_folder
     
 # selects valid clips and meets desired video length requirement
 def run_selection(model_path=MODEL_PATH):
     video_folder = os.listdir(VIDEO_FOLDER_PATH)
+
+    video_folder = strip_folder(video_folder)
+    video_folder.sort(key=lambda f: int(re.sub('\D', '', f)))
+    print(video_folder)
+
     results = []
     current_duration = 0
     video_idx = 0
@@ -68,7 +82,7 @@ def run_selection(model_path=MODEL_PATH):
     return [results, video_idx, current_duration]
 
 def write_results2file(results):
-
+    os.remove('VideoCompilation/ClipData/valid_clips.txt')
     with open('VideoCompilation/ClipData/valid_clips.txt', 'w') as fp:
         for result in results:
             # write each item on a new line
